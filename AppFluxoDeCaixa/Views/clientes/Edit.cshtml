@@ -1,4 +1,4 @@
-﻿@model AppFluxoDeCaixa.Models.clientes
+﻿@model AppFluxoDeCaixa.Models.Clientes
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,17 +6,17 @@
 
 <h1>Edit</h1>
 
-<h4>clientes</h4>
+<h4>Clientes</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="clientesId" />
+            <input type="hidden" asp-for="ClientesId" />
             <div class="form-group">
-                <label asp-for="clientesNome" class="control-label"></label>
-                <input asp-for="clientesNome" class="form-control" />
-                <span asp-validation-for="clientesNome" class="text-danger"></span>
+                <label asp-for="ClientesNome" class="control-label"></label>
+                <input asp-for="ClientesNome" class="form-control" />
+                <span asp-validation-for="ClientesNome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Logradouro" class="control-label"></label>
@@ -87,6 +87,11 @@
                 <label asp-for="Observacao" class="control-label"></label>
                 <input asp-for="Observacao" class="form-control" />
                 <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -1,4 +1,4 @@
-﻿@model AppFluxoDeCaixa.Models.clientes
+﻿@model AppFluxoDeCaixa.Models.Clientes
 
 @{
     ViewData["Title"] = "Details";
@@ -7,14 +7,14 @@
 <h1>Details</h1>
 
 <div>
-    <h4>clientes</h4>
+    <h4>Clientes</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.clientesNome)
+            @Html.DisplayNameFor(model => model.ClientesNome)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.clientesNome)
+            @Html.DisplayFor(model => model.ClientesNome)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Logradouro)
@@ -100,9 +100,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Observacao)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.clientesId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.ClientesId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

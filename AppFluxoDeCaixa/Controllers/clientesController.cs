@@ -10,22 +10,22 @@ using AppFluxoDeCaixa.Models;
 
 namespace AppFluxoDeCaixa.Controllers
 {
-    public class clientesController : Controller
+    public class ClientesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public clientesController(ApplicationDbContext context)
+        public ClientesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: clientes
+        // GET: Clientes
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clientes.ToListAsync());
         }
 
-        // GET: clientes/Details/5
+        // GET: Clientes/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -34,7 +34,7 @@ namespace AppFluxoDeCaixa.Controllers
             }
 
             var clientes = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.clientesId == id);
+                .FirstOrDefaultAsync(m => m.ClientesId == id);
             if (clientes == null)
             {
                 return NotFound();
@@ -43,22 +43,22 @@ namespace AppFluxoDeCaixa.Controllers
             return View(clientes);
         }
 
-        // GET: clientes/Create
+        // GET: Clientes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: clientes/Create
+        // POST: Clientes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("clientesId,clientesNome,Logradouro,Cidade,UF,CEP,Bairro,Email,Telefone,Celular,TipoPessoa,CpfCnpj,DataCadastro,DataNascFundacao,CadastroAtivo,Observacao")] clientes clientes)
+        public async Task<IActionResult> Create([Bind("ClientesId,ClientesNome,Logradouro,Cidade,UF,CEP,Bairro,Email,Telefone,Celular,TipoPessoa,CpfCnpj,DataCadastro,DataNascFundacao,CadastroAtivo,Observacao,Numero")] Clientes clientes)
         {
             if (ModelState.IsValid)
             {
-                clientes.clientesId = Guid.NewGuid();
+                clientes.ClientesId = Guid.NewGuid();
                 _context.Add(clientes);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -66,7 +66,7 @@ namespace AppFluxoDeCaixa.Controllers
             return View(clientes);
         }
 
-        // GET: clientes/Edit/5
+        // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -82,14 +82,14 @@ namespace AppFluxoDeCaixa.Controllers
             return View(clientes);
         }
 
-        // POST: clientes/Edit/5
+        // POST: Clientes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("clientesId,clientesNome,Logradouro,Cidade,UF,CEP,Bairro,Email,Telefone,Celular,TipoPessoa,CpfCnpj,DataCadastro,DataNascFundacao,CadastroAtivo,Observacao")] clientes clientes)
+        public async Task<IActionResult> Edit(Guid id, [Bind("ClientesId,ClientesNome,Logradouro,Cidade,UF,CEP,Bairro,Email,Telefone,Celular,TipoPessoa,CpfCnpj,DataCadastro,DataNascFundacao,CadastroAtivo,Observacao,Numero")] Clientes clientes)
         {
-            if (id != clientes.clientesId)
+            if (id != clientes.ClientesId)
             {
                 return NotFound();
             }
@@ -103,7 +103,7 @@ namespace AppFluxoDeCaixa.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!clientesExists(clientes.clientesId))
+                    if (!ClientesExists(clientes.ClientesId))
                     {
                         return NotFound();
                     }
@@ -117,7 +117,7 @@ namespace AppFluxoDeCaixa.Controllers
             return View(clientes);
         }
 
-        // GET: clientes/Delete/5
+        // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -126,7 +126,7 @@ namespace AppFluxoDeCaixa.Controllers
             }
 
             var clientes = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.clientesId == id);
+                .FirstOrDefaultAsync(m => m.ClientesId == id);
             if (clientes == null)
             {
                 return NotFound();
@@ -135,7 +135,7 @@ namespace AppFluxoDeCaixa.Controllers
             return View(clientes);
         }
 
-        // POST: clientes/Delete/5
+        // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
@@ -150,9 +150,9 @@ namespace AppFluxoDeCaixa.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool clientesExists(Guid id)
+        private bool ClientesExists(Guid id)
         {
-            return _context.Clientes.Any(e => e.clientesId == id);
+            return _context.Clientes.Any(e => e.ClientesId == id);
         }
     }
 }
